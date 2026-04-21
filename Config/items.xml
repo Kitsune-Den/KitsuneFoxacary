@@ -16,6 +16,8 @@
 		<!-- =============================================================== -->
 		<item name="foxacaryFieldBrace">
 			<property name="Extends" value="medicalSplint"/>
+			<property name="CustomIcon" value="medicalSplint"/>
+			<property name="CustomIconTint" value="c8a878"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="EconomicValue" value="15"/>
@@ -48,6 +50,8 @@
 		<!-- =============================================================== -->
 		<item name="foxacarySutureKit">
 			<property name="Extends" value="medicalBandage"/>
+			<property name="CustomIcon" value="medicalBandage"/>
+			<property name="CustomIconTint" value="a0c0e0"/>
 			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="EconomicValue" value="30"/>
@@ -72,6 +76,8 @@
 		<!-- =============================================================== -->
 		<item name="foxacaryHoneyedDressing">
 			<property name="Extends" value="medicalBandage"/>
+			<property name="CustomIcon" value="medicalBandage"/>
+			<property name="CustomIconTint" value="f4b942"/>
 			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="EconomicValue" value="50"/>
@@ -96,6 +102,8 @@
 		<!-- =============================================================== -->
 		<item name="foxacaryRoyalJellySalve">
 			<property name="Extends" value="medicalAloeCream"/>
+			<property name="CustomIcon" value="medicalAloeCream"/>
+			<property name="CustomIconTint" value="ffd966"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="EconomicValue" value="150"/>
@@ -117,6 +125,8 @@
 		<!-- =============================================================== -->
 		<item name="foxacaryTransfusionKit">
 			<property name="Extends" value="medicalFirstAidKit"/>
+			<property name="CustomIcon" value="medicalFirstAidKit"/>
+			<property name="CustomIconTint" value="ff5050"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="EconomicValue" value="300"/>
