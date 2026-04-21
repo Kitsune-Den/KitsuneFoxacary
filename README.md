@@ -3,6 +3,7 @@
 ![KitsuneFoxacary banner](assets/KitsuneFoxacary-banner.jpg)
 
 [![Latest Release](https://img.shields.io/github/v/release/Kitsune-Den/KitsuneFoxacary?style=flat&color=teal)](https://github.com/Kitsune-Den/KitsuneFoxacary/releases)
+[![Discord](https://img.shields.io/badge/Discord-Kitsune_Den-5865F2?style=flat&logo=discord&logoColor=white)](https://kitsuneden.net/discord)
 [![Twitter](https://img.shields.io/badge/Twitter-@AdaInTheLab-1DA1F2?style=flat&logo=x&logoColor=white)](https://x.com/AdaInTheLab)
 [![License](https://img.shields.io/github/license/Kitsune-Den/KitsuneFoxacary?style=flat)](LICENSE)
 
