@@ -3,3 +3,7 @@
 *.suo
 .DS_Store
 Thumbs.db
+
+# Release packaging artifacts
+*.zip
+_pack/
