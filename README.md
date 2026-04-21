@@ -1,6 +1,6 @@
-# Foxacary
+# KitsuneFoxacary
 
-A fox-crafted medical expansion for 7 Days to Die. Think KitsuneKitchen, but for the topical, injected, and bandaged side of survival.
+Fox-crafted pharmacy expansion for 7 Days to Die. Think KitsuneKitchen, but for the topical, injected, and bandaged side of survival.
 
 ## Why
 
@@ -34,7 +34,7 @@ Numbers, exact ingredient counts, and recipe costs are being tuned.
 
 ## Install
 
-1. Drop the `Foxacary/` folder into `<7D2D install>/Mods/`
+1. Drop the `KitsuneFoxacary/` folder into `<7D2D install>/Mods/`
 2. Launch the game
 
 XML-only mod. No DLL, no Harmony. Works on both client and server.

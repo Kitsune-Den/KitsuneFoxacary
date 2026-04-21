@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xml>
-	<Name value="Foxacary" />
-	<DisplayName value="Foxacary" />
-	<Description value="A fox-crafted medical expansion for 7 Days to Die. New wraps, salves, braces, and kits that fill the gaps vanilla leaves behind. Gives blood bags and queen bees an actual purpose. Integrates with the vanilla medical journal progression." />
-	<Website value="https://github.com/Kitsune-Den/Foxacary" />
+	<Name value="KitsuneFoxacary" />
+	<DisplayName value="KitsuneFoxacary" />
+	<Description value="A fox-crafted pharmacy expansion for 7 Days to Die. New wraps, salves, braces, and kits that fill the gaps vanilla leaves behind. Gives blood bags and queen bees an actual purpose. Integrates with the vanilla medical journal progression." />
+	<Website value="https://github.com/Kitsune-Den/KitsuneFoxacary" />
 	<Author value="Kitsune-Den" />
 	<Version value="1.0.0" />
 </xml>
