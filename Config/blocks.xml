@@ -1,0 +1,19 @@
+<configs>
+
+	<!-- ================================================================== -->
+	<!-- Give Queen Bee a loot source.                                        -->
+	<!--                                                                      -->
+	<!-- Vanilla defines the item but never drops it anywhere. We attach it   -->
+	<!-- to the same tree-harvest path as honey so it reuses the Wasteland    -->
+	<!-- Treasures perk gate. Lower probability than honey since it's meant   -->
+	<!-- to be a premium crafting ingredient for Royal Jelly Salve.            -->
+	<!-- ================================================================== -->
+
+	<append xpath="/blocks/block[@name='treeMaster']">
+		<drop event="Harvest" name="resourceQueenBee" prob=".01" count="1" tag="WasteTreasuresHoneyHarvest"/>
+	</append>
+
+	<!-- Bump vanilla honey drop chance from 5% to 7%. Small nudge. -->
+	<set xpath="/blocks/block[@name='treeMaster']/drop[@name='foodHoney']/@prob">.07</set>
+
+</configs>

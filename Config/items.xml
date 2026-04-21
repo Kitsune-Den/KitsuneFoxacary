@@ -1,0 +1,138 @@
+<configs>
+
+	<!-- ================================================================== -->
+	<!-- Foxacary items                                                      -->
+	<!--                                                                      -->
+	<!-- Every item slots into craftingMedical progression via progression.xml. -->
+	<!-- Each item uses an underused or entirely-unused vanilla resource.      -->
+	<!-- ================================================================== -->
+
+	<append xpath="/items">
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Field Brace                                             -->
+		<!-- Cures a sprain without requiring Physician perk.                  -->
+		<!-- Uses: thread (accumulates), cloth fragments, wood.                -->
+		<!-- =============================================================== -->
+		<item name="foxacaryFieldBrace">
+			<property name="Extends" value="medicalSplint"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="15"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryFieldBraceDesc"/>
+
+			<!-- Strip perk requirement; splint requires perkPhysician 1. -->
+			<effect_group name="Primary Action" tiered="false">
+				<requirement name="HasBuff" buff="buffLegSprained"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffLegSprained"/>
+			</effect_group>
+			<effect_group name="Primary Action" tiered="false">
+				<requirement name="HasBuff" buff="buffArmSprained"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffArmSprained"/>
+			</effect_group>
+			<effect_group name="Secondary Action" tiered="false">
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffLegSprained">
+					<requirement name="HasBuff" target="other" buff="buffLegSprained"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffArmSprained">
+					<requirement name="HasBuff" target="other" buff="buffArmSprained"/>
+				</triggered_effect>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Suture Kit                                              -->
+		<!-- Instant stop on bleeding AND abrasion in one use.                 -->
+		<!-- Uses: thread, sewing kit (accumulates), alcohol.                  -->
+		<!-- =============================================================== -->
+		<item name="foxacarySutureKit">
+			<property name="Extends" value="medicalBandage"/>
+			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="30"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacarySutureKitDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryAbrasion"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryAbrasion"/>
+				<display_value name="dStopsBleeding" value="1"/>
+				<display_value name="dStopsAbrasion" value="1"/>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Honeyed Battle Dressing                                 -->
+		<!-- Stops bleeding, blocks next infection catch (honey = infection,   -->
+		<!-- per the Kitsune brand rule).                                      -->
+		<!-- Uses: honey, bandage, cloth.                                      -->
+		<!-- =============================================================== -->
+		<item name="foxacaryHoneyedDressing">
+			<property name="Extends" value="medicalBandage"/>
+			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="50"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryHoneyedDressingDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInfectionCatch"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryHoneyedDressing"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInfectionCatch"/>
+				<display_value name="dStopsBleeding" value="1"/>
+				<display_value name="dInfectionResist" value="1"/>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Royal Jelly Salve                                        -->
+		<!-- Strong heal-over-time, finally gives queen bees a purpose.        -->
+		<!-- Uses: queen bee (ZERO vanilla use!), beeswax, cloth.              -->
+		<!-- =============================================================== -->
+		<item name="foxacaryRoyalJellySalve">
+			<property name="Extends" value="medicalAloeCream"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="150"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryRoyalJellySalveDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryRoyalJelly"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryRoyalJelly"/>
+				<display_value name="dHealOverTime" value="50"/>
+				<display_value name="dDuration" value="60"/>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Transfusion Kit                                          -->
+		<!-- Big instant HP restore. Finally a use for blood bags.             -->
+		<!-- Uses: blood bag (ZERO vanilla use!), duct tape, first aid bandage. -->
+		<!-- =============================================================== -->
+		<item name="foxacaryTransfusionKit">
+			<property name="Extends" value="medicalFirstAidKit"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="300"/>
+			<property name="Stacknumber" value="3"/>
+			<property name="DescriptionKey" value="foxacaryTransfusionKitDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="70"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="70" target="other"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
+				<display_value name="dInstantHealth" value="70"/>
+				<display_value name="dStopsBleeding" value="1"/>
+			</effect_group>
+		</item>
+
+	</append>
+
+</configs>

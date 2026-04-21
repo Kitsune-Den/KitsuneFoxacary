@@ -1,0 +1,37 @@
+<configs>
+
+	<!-- ================================================================== -->
+	<!-- Hook Foxacary items into the craftingMedical journal progression.    -->
+	<!-- Existing vanilla unlock levels: 5, 10, 20, 30, 40, 50, 60, 75.       -->
+	<!-- We slot into the gaps so the curve feels like expansion, not bolt-on.-->
+	<!-- ================================================================== -->
+
+	<append xpath="/progression/crafting_skill[@name='craftingMedical']">
+
+		<!-- Visible entries in the medical skill UI -->
+		<display_entry icon="foxacaryFieldBrace,foxacarySutureKit" name_key="foxacaryT1-1,foxacaryT1-2" has_quality="false" unlock_level="3,15">
+			<unlock_entry item="foxacaryFieldBrace" unlock_tier="1"/>
+			<unlock_entry item="foxacarySutureKit" unlock_tier="2"/>
+		</display_entry>
+
+		<display_entry icon="foxacaryHoneyedDressing,foxacaryRoyalJellySalve" name_key="foxacaryT2-1,foxacaryT2-2" has_quality="false" unlock_level="25,35">
+			<unlock_entry item="foxacaryHoneyedDressing" unlock_tier="1"/>
+			<unlock_entry item="foxacaryRoyalJellySalve" unlock_tier="2"/>
+		</display_entry>
+
+		<display_entry icon="foxacaryTransfusionKit" name_key="foxacaryT3-1" has_quality="false" unlock_level="65">
+			<unlock_entry item="foxacaryTransfusionKit" unlock_tier="1"/>
+		</display_entry>
+
+		<!-- Recipe unlock wiring -->
+		<effect_group>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="3,100"  value="1" tags="foxacaryFieldBrace"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="15,100" value="1" tags="foxacarySutureKit"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="foxacaryHoneyedDressing"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="foxacaryRoyalJellySalve"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="foxacaryTransfusionKit"/>
+		</effect_group>
+
+	</append>
+
+</configs>

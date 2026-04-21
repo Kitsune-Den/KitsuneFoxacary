@@ -1,0 +1,43 @@
+<configs>
+
+	<!-- ================================================================== -->
+	<!-- Foxacary custom buffs                                                -->
+	<!-- ================================================================== -->
+
+	<append xpath="/buffs">
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryRoyalJelly                                           -->
+		<!-- Heal-over-time applied by the Royal Jelly Salve.                  -->
+		<!-- 50 HP over 60 seconds at ~0.83 HP/s.                              -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryRoyalJelly" name_key="buffFoxacaryRoyalJellyName" description_key="buffFoxacaryRoyalJellyDesc" icon="ui_game_symbol_medical" icon_color="255,200,40">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryHoneyedDressing                                      -->
+		<!-- Short window of infection-catch resistance after application.     -->
+		<!-- Player feels "I treated the wound" and is protected until the     -->
+		<!-- dressing is effectively spent.                                    -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryHoneyedDressing" name_key="buffFoxacaryHoneyedDressingName" description_key="buffFoxacaryHoneyedDressingDesc" icon="ui_game_symbol_medical" icon_color="240,180,40">
+			<stack_type value="replace"/>
+			<duration value="120"/>
+			<display_value value="duration"/>
+
+			<effect_group>
+				<passive_effect name="BuffResistance" operation="base_add" value="1" tags="buffInfectionCatch"/>
+			</effect_group>
+		</buff>
+
+	</append>
+
+</configs>

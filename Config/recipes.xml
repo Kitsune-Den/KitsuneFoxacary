@@ -1,0 +1,49 @@
+<configs>
+
+	<!-- ================================================================== -->
+	<!-- Foxacary recipes                                                     -->
+	<!-- Ingredient counts are first-draft and will be tuned after playtest.  -->
+	<!-- ================================================================== -->
+
+	<append xpath="/recipes">
+
+		<!-- Field Brace - earliest unlock, zero-effort ingredients -->
+		<recipe name="foxacaryFieldBrace" count="1" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceCloth" count="5"/>
+			<ingredient name="resourceWood" count="2"/>
+			<ingredient name="resourceDuctTape" count="1"/>
+		</recipe>
+
+		<!-- Suture Kit - thread + sewing kit + alcohol-equivalent -->
+		<recipe name="foxacarySutureKit" count="1" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceCloth" count="3"/>
+			<ingredient name="resourceSewingKit" count="1"/>
+			<ingredient name="drinkJarBeer" count="1"/>
+		</recipe>
+
+		<!-- Honeyed Battle Dressing - honey preserved for infection cure per brand rule -->
+		<recipe name="foxacaryHoneyedDressing" count="1" craft_area="campfire" craft_tool="toolBeaker" tags="learnable">
+			<ingredient name="foodHoney" count="1"/>
+			<ingredient name="medicalBandage" count="1"/>
+			<ingredient name="resourceCloth" count="2"/>
+		</recipe>
+
+		<!-- Royal Jelly Salve - finally gives queen bee a purpose -->
+		<!-- TODO: queen bee may need a loot source added, it's orphaned in vanilla -->
+		<recipe name="foxacaryRoyalJellySalve" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+			<ingredient name="resourceQueenBee" count="1"/>
+			<ingredient name="resourceBeeswax" count="3"/>
+			<ingredient name="resourceCloth" count="2"/>
+			<ingredient name="medicalAloeCream" count="1"/>
+		</recipe>
+
+		<!-- Transfusion Kit - late-game emergency heal -->
+		<recipe name="foxacaryTransfusionKit" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+			<ingredient name="medicalBloodBag" count="2"/>
+			<ingredient name="resourceDuctTape" count="2"/>
+			<ingredient name="medicalFirstAidBandage" count="1"/>
+		</recipe>
+
+	</append>
+
+</configs>

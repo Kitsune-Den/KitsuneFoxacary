@@ -1,0 +1,20 @@
+Key,File,Type,UsedInMainMenu,NoTranslate,english
+foxacaryFieldBrace,items,Medical,,,Field Brace
+foxacaryFieldBraceDesc,items,Medical,,,A length of cloth bound with duct tape and a wood splint. Bracing it tight against a sprain lets you walk it off. No surgeon required.
+foxacarySutureKit,items,Medical,,,Suture Kit
+foxacarySutureKitDesc,items,Medical,,,Thread and a sterilized needle. Closes bleeding wounds and abrasions in one pass. Still stings like hell.
+foxacaryHoneyedDressing,items,Medical,,,Honeyed Battle Dressing
+foxacaryHoneyedDressingDesc,items,Medical,,,A bandage saturated with honey. Stops bleeding and keeps the wound from catching an infection for a while.
+foxacaryRoyalJellySalve,items,Medical,,,Royal Jelly Salve
+foxacaryRoyalJellySalveDesc,items,Medical,,,A thick salve rendered from queen bee extract and beeswax. Applied to the skin it soaks in and knits flesh back together.
+foxacaryTransfusionKit,items,Medical,,,Transfusion Kit
+foxacaryTransfusionKitDesc,items,Medical,,,A field blood transfusion rig. Ugly to look at. Saves lives anyway.
+buffFoxacaryRoyalJellyName,buffs,,,,Royal Jelly
+buffFoxacaryRoyalJellyDesc,buffs,,,,The salve is doing its work. You feel yourself mending.
+buffFoxacaryHoneyedDressingName,buffs,,,,Honeyed Dressing
+buffFoxacaryHoneyedDressingDesc,buffs,,,,The wound is bound and the honey is doing what honey does. Less likely to catch an infection.
+foxacaryT1-1,progression,,,,Field Brace
+foxacaryT1-2,progression,,,,Suture Kit
+foxacaryT2-1,progression,,,,Honeyed Battle Dressing
+foxacaryT2-2,progression,,,,Royal Jelly Salve
+foxacaryT3-1,progression,,,,Transfusion Kit
