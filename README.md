@@ -1,5 +1,11 @@
 # KitsuneFoxacary
 
+![KitsuneFoxacary banner](assets/KitsuneFoxacary-banner.jpg)
+
+[![Latest Release](https://img.shields.io/github/v/release/Kitsune-Den/KitsuneFoxacary?style=flat&color=teal)](https://github.com/Kitsune-Den/KitsuneFoxacary/releases)
+[![Twitter](https://img.shields.io/badge/Twitter-@AdaInTheLab-1DA1F2?style=flat&logo=x&logoColor=white)](https://x.com/AdaInTheLab)
+[![License](https://img.shields.io/github/license/Kitsune-Den/KitsuneFoxacary?style=flat)](LICENSE)
+
 Fox-crafted pharmacy expansion for 7 Days to Die. Think KitsuneKitchen, but for the topical, injected, and bandaged side of survival.
 
 ## Why
