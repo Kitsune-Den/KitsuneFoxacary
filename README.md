@@ -1,5 +1,12 @@
 # KitsuneFoxacary
 
+🦊 **Part of the [Kitsune Systems Collection](https://github.com/Kitsune-Den)** —
+[KitsunePvPExtended](https://github.com/Kitsune-Den/KitsunePvPExtended) ·
+[KitsuneTrapXP](https://github.com/Kitsune-Den/KitsuneTrapXP) ·
+[KitsuneZombieReach](https://github.com/Kitsune-Den/KitsuneZombieReach) ·
+[KitsuneKitchen7D](https://github.com/Kitsune-Den/KitsuneKitchen7D) ·
+[KitsuneFuelSaver](https://github.com/Kitsune-Den/KitsuneFuelSaver)
+
 ![KitsuneFoxacary banner](assets/KitsuneFoxacary-banner.jpg)
 
 [![Latest Release](https://img.shields.io/github/v/release/Kitsune-Den/KitsuneFoxacary?style=flat&color=teal)](https://github.com/Kitsune-Den/KitsuneFoxacary/releases)
