@@ -57,7 +57,7 @@ XML-only mod. No DLL, no Harmony. Works on both client and server.
 
 Needs to be installed on both server AND clients since it adds new items. This is normal for any 7D2D content mod.
 
-Built against V2.6.14.
+Built against V3.0 (Dead Hot Summer). All vanilla items, buffs, the `craftingMedical` progression skill, and the `treeMaster` honey/queen-bee loot hooks are verified present and unchanged in 3.0.
 
 ## License
 
