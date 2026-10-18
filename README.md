@@ -61,4 +61,4 @@ Built against V3.0 (Dead Hot Summer). All vanilla items, buffs, the `craftingMed
 
 ## License
 
-MIT.
+[CC BY-NC-SA 4.0](LICENSE), with an extra permission for servers that make money: see [NOTICE.md](NOTICE.md). In short: play it, change it and share it, with credit, not for sale, and with changed versions under the same license.
