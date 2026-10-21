@@ -23,6 +23,16 @@
 			<unlock_entry item="foxacaryTransfusionKit" unlock_tier="1"/>
 		</display_entry>
 
+		<display_entry icon="foxacaryColdCompress,foxacaryBurnSalve" name_key="foxacaryT1-3,foxacaryT2-3" has_quality="false" unlock_level="12,28">
+			<unlock_entry item="foxacaryColdCompress" unlock_tier="1"/>
+			<unlock_entry item="foxacaryBurnSalve" unlock_tier="2"/>
+		</display_entry>
+
+		<display_entry icon="foxacaryAdrenalineShot,foxacaryRadShot" name_key="foxacaryT3-2,foxacaryT3-3" has_quality="false" unlock_level="45,55">
+			<unlock_entry item="foxacaryAdrenalineShot" unlock_tier="1"/>
+			<unlock_entry item="foxacaryRadShot" unlock_tier="2"/>
+		</display_entry>
+
 		<!-- Recipe unlock wiring -->
 		<effect_group>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="3,100"  value="1" tags="foxacaryFieldBrace"/>
@@ -30,6 +40,10 @@
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="25,100" value="1" tags="foxacaryHoneyedDressing"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="35,100" value="1" tags="foxacaryRoyalJellySalve"/>
 			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="65,100" value="1" tags="foxacaryTransfusionKit"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="12,100" value="1" tags="foxacaryColdCompress"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="28,100" value="1" tags="foxacaryBurnSalve"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="45,100" value="1" tags="foxacaryAdrenalineShot"/>
+			<passive_effect name="RecipeTagUnlocked" operation="base_set" level="55,100" value="1" tags="foxacaryRadShot"/>
 		</effect_group>
 
 	</append>

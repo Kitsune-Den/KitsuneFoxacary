@@ -147,6 +147,112 @@
 			</effect_group>
 		</item>
 
+		<!-- =============================================================== -->
+		<!-- Foxacary Cold Compress                                           -->
+		<!-- Eases a concussion, and cools you down in a Sand Storm: takes    -->
+		<!-- 60 seconds off the storm's clock before it wears you down.        -->
+		<!-- Uses: snowballs (one vanilla recipe), cloth.                      -->
+		<!-- =============================================================== -->
+		<item name="foxacaryColdCompress">
+			<property name="Extends" value="medicalBandage"/>
+			<property name="CustomIcon" value="resourceSnowBall"/>
+			<property name="CustomIconTint" value="c0e8ff"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="20"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryColdCompressDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryConcussion"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryConcussion"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DesertTrackTime" operation="subtract" value="60"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DesertTrackTime" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DesertTrackTime" operation="LT" value="0"/></triggered_effect>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Burn Salve                                              -->
+		<!-- Puts out fire, heals 20 over 20 seconds, and takes 60 seconds    -->
+		<!-- off an Ember Storm's clock.                                       -->
+		<!-- Uses: aloe cream, animal fat, beeswax (one vanilla recipe).       -->
+		<!-- =============================================================== -->
+		<item name="foxacaryBurnSalve">
+			<property name="Extends" value="medicalAloeCream"/>
+			<property name="CustomIcon" value="medicalAloeCream"/>
+			<property name="CustomIconTint" value="e07040"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="60"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryBurnSalveDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffBurningElement,buffBurningMolotov,buffBurningZombie,buffBurningFlamingArrow,buffBurningEnvironment"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryBurnSalve"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffBurningElement,buffBurningMolotov,buffBurningZombie,buffBurningFlamingArrow,buffBurningEnvironment"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryBurnSalve"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".BurntTrackTime" operation="subtract" value="60"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".BurntTrackTime" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".BurntTrackTime" operation="LT" value="0"/></triggered_effect>
+				<display_value name="dHealOverTime" value="20"/>
+				<display_value name="dDuration" value="20"/>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Adrenaline Shot                                         -->
+		<!-- 30 seconds of +20% run speed and +50% stamina regen to get out   -->
+		<!-- of trouble, then 60 seconds of -25% stamina regen as it wears off.-->
+		<!-- Uses: testosterone extract (two vanilla recipes), painkillers.    -->
+		<!-- =============================================================== -->
+		<item name="foxacaryAdrenalineShot">
+			<property name="Extends" value="drugSteroids"/>
+			<property name="CustomIcon" value="drugSteroids"/>
+			<property name="CustomIconTint" value="ffd040"/>
+			<property name="DisplayType" value="drugHazardReducer"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="120"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryAdrenalineShotDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffFoxacaryAdrenalineCrash"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryAdrenaline"/>
+				<display_value name="dRunSpeed" value=".2"/>
+				<display_value name="dDuration" value="30"/>
+			</effect_group>
+		</item>
+
+		<!-- =============================================================== -->
+		<!-- Foxacary Rad Shot                                                -->
+		<!-- Takes 120 seconds off a Radiation Storm's clock and heals 30 over -->
+		<!-- 30 seconds. Doesn't touch the biome hazard timers (vanilla's     -->
+		<!-- smoothies do that) or the deadly radiation at the map's edge.    -->
+		<!-- Uses: blood bag, nitrate powder, radiated mushrooms (one recipe). -->
+		<!-- =============================================================== -->
+		<item name="foxacaryRadShot">
+			<property name="Extends" value="drugSteroids"/>
+			<property name="CustomIcon" value="drugSteroids"/>
+			<property name="CustomIconTint" value="80ff60"/>
+			<property name="DisplayType" value="drugHazardReducer"/>
+			<property name="Tags" value="medical,medicalSkill,foxacary"/>
+			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="EconomicValue" value="200"/>
+			<property name="Stacknumber" value="5"/>
+			<property name="DescriptionKey" value="foxacaryRadShotDesc"/>
+
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryRadShot"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".WastelandTrackTime" operation="subtract" value="120"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".WastelandTrackTime" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".WastelandTrackTime" operation="LT" value="0"/></triggered_effect>
+				<display_value name="dDuration" value="30"/>
+			</effect_group>
+		</item>
+
 	</append>
 
 </configs>
