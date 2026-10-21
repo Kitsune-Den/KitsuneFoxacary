@@ -6,7 +6,7 @@
 	<!-- We slot into the gaps so the curve feels like expansion, not bolt-on.-->
 	<!-- ================================================================== -->
 
-	<append xpath="/progression/crafting_skill[@name='craftingMedical']">
+	<append xpath="/progression/crafting_skills/crafting_skill[@name='craftingMedical']">
 
 		<!-- Visible entries in the medical skill UI -->
 		<display_entry icon="foxacaryFieldBrace,foxacarySutureKit" name_key="foxacaryT1-1,foxacaryT1-2" has_quality="false" unlock_level="3,15">

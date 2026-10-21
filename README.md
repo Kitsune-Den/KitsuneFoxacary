@@ -48,16 +48,16 @@ Numbers, exact ingredient counts, and recipe costs are being tuned.
 
 ## Install
 
-1. Drop the `KitsuneFoxacary/` folder into `<7D2D install>/Mods/`
-2. Launch the game
+1. Drop the `KitsuneFoxacary/` folder into `<7D2D install>/Mods/` (the server's, on a dedicated server)
+2. Launch the game, or restart the server
 
-XML-only mod. No DLL, no Harmony. Works on both client and server.
+XML-only mod. No DLL, no Harmony, EAC-safe.
 
 ## Compatibility
 
-Needs to be installed on both server AND clients since it adds new items. This is normal for any 7D2D content mod.
+**Server-side only** on a dedicated server: players don't need to install it. The server sends its XML and localization when they join, and every item uses a vanilla icon. Single player works too.
 
-Built against V3.0 (Dead Hot Summer). All vanilla items, buffs, the `craftingMedical` progression skill, and the `treeMaster` honey/queen-bee loot hooks are verified present and unchanged in 3.0.
+Built against V3.0 (Dead Hot Summer), and its patches checked against V3.3: the vanilla items, buffs, the `craftingMedical` progression skill and the `treeMaster` honey/queen-bee loot hooks are all still there.
 
 ## License
 
