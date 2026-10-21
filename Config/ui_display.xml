@@ -1,0 +1,54 @@
+<configs>
+
+	<!-- ================================================================== -->
+	<!-- Foxacary stats window                                                -->
+	<!--                                                                      -->
+	<!-- The stats window only shows the entries its display type lists, and  -->
+	<!-- each item inherits its vanilla base's type. Those list values our    -->
+	<!-- items never set (vanilla heals through medicalRegHealthAmount, ours  -->
+	<!-- through buffs), so heals read as 0. These types list what each item -->
+	<!-- actually sets, and every entry on a type is set by every item on it. -->
+	<!-- ================================================================== -->
+
+	<append xpath="/ui_display_info/item_display">
+
+		<!-- Royal Jelly Salve, Burn Salve, Rad Shot -->
+		<item_display_info display_type="foxacaryHealOverTime" display_group="groupConsumables">
+			<display_entry name="dHealthAmount" title_key="statHealthChangeOT" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+
+		<!-- Transfusion Kit -->
+		<item_display_info display_type="foxacaryTransfusion" display_group="groupConsumables">
+			<display_entry name="dInstantHealth" title_key="statShowInstantHealth"/>
+			<display_entry name="dHealthAmount" title_key="statHealthChangeOT" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+			<display_entry name="dStopsBleeding" title_key="statStopsBleeding" display_type="Percent"/>
+		</item_display_info>
+
+		<!-- Honeyed Battle Dressing -->
+		<item_display_info display_type="foxacaryHoneyedDressing" display_group="groupConsumables">
+			<display_entry name="dStopsBleeding" title_key="statStopsBleeding" display_type="Percent"/>
+			<display_entry name="dCureInfection" title_key="statCureInfection" display_type="Percent"/>
+		</item_display_info>
+
+		<!-- Suture Kit -->
+		<item_display_info display_type="foxacaryStopsBleeding" display_group="groupConsumables">
+			<display_entry name="dStopsBleeding" title_key="statStopsBleeding" display_type="Percent"/>
+		</item_display_info>
+
+		<!-- Cold Compress -->
+		<item_display_info display_type="foxacaryColdCompress" display_group="groupConsumables">
+			<display_entry name="dEasesConcussion" title_key="statFoxacaryEasesConcussion" display_type="Percent"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+
+		<!-- Adrenaline Shot -->
+		<item_display_info display_type="foxacaryAdrenaline" display_group="groupConsumables">
+			<display_entry name="dRunSpeed" title_key="statRunSpeed" display_type="Percent" display_leading_plus="true"/>
+			<display_entry name="dDuration" title_key="statDuration" display_type="Time"/>
+		</item_display_info>
+
+	</append>
+
+</configs>
