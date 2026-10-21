@@ -54,6 +54,63 @@
 			</effect_group>
 		</buff>
 
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryBurnSalve: 20 HP over 20 seconds after a Burn Salve. -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryBurnSalve" name_key="buffFoxacaryBurnSalveName" description_key="buffFoxacaryBurnSalveDesc" icon="ui_game_symbol_medical" icon_color="230,120,60">
+			<stack_type value="replace"/>
+			<duration value="20"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryAdrenaline: 30 seconds of +20% run speed and +50%    -->
+		<!-- stamina regen. When it ends, the crash starts.                   -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryAdrenaline" name_key="buffFoxacaryAdrenalineName" description_key="buffFoxacaryAdrenalineDesc" icon="ui_game_symbol_run" icon_color="255,210,60">
+			<stack_type value="replace"/>
+			<duration value="30"/>
+			<display_value value="duration"/>
+
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".2"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value=".5"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffFoxacaryAdrenalineCrash"/>
+			</effect_group>
+		</buff>
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryAdrenalineCrash: 60 seconds of -25% stamina regen.   -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryAdrenalineCrash" name_key="buffFoxacaryAdrenalineCrashName" description_key="buffFoxacaryAdrenalineCrashDesc" icon="ui_game_symbol_run" icon_color="140,140,140">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value="duration"/>
+
+			<effect_group>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value="-.25"/>
+			</effect_group>
+		</buff>
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryRadShot: 30 HP over 30 seconds after a Rad Shot.     -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryRadShot" name_key="buffFoxacaryRadShotName" description_key="buffFoxacaryRadShotDesc" icon="ui_game_symbol_medical" icon_color="120,255,90">
+			<stack_type value="replace"/>
+			<duration value="30"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1"/>
+			</effect_group>
+		</buff>
+
 	</append>
 
 </configs>

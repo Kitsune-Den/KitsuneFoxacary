@@ -44,6 +44,32 @@
 			<ingredient name="medicalFirstAidBandage" count="1"/>
 		</recipe>
 
+		<!-- Cold Compress - snowballs finally do something -->
+		<recipe name="foxacaryColdCompress" count="1" tags="learnable,packMuleCrafting">
+			<ingredient name="resourceSnowBall" count="2"/>
+			<ingredient name="resourceCloth" count="2"/>
+		</recipe>
+
+		<!-- Burn Salve - aloe thickened with fat and wax -->
+		<recipe name="foxacaryBurnSalve" count="1" craft_area="campfire" craft_tool="toolBeaker" tags="learnable">
+			<ingredient name="medicalAloeCream" count="1"/>
+			<ingredient name="resourceAnimalFat" count="2"/>
+			<ingredient name="resourceBeeswax" count="2"/>
+		</recipe>
+
+		<!-- Adrenaline Shot - a use for testosterone extract -->
+		<recipe name="foxacaryAdrenalineShot" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+			<ingredient name="resourceTestosteroneExtract" count="2"/>
+			<ingredient name="drugPainkillers" count="1"/>
+		</recipe>
+
+		<!-- Rad Shot - clean blood, a nitrate chaser, and a little hair of the dog -->
+		<recipe name="foxacaryRadShot" count="1" craft_area="chemistryStation" tags="learnable,chemStationCrafting">
+			<ingredient name="medicalBloodBag" count="1"/>
+			<ingredient name="resourcePotassiumNitratePowder" count="2"/>
+			<ingredient name="foodCropMushroomsRadiated" count="1"/>
+		</recipe>
+
 	</append>
 
 </configs>
