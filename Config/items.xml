@@ -120,8 +120,8 @@
 
 		<!-- =============================================================== -->
 		<!-- Foxacary Transfusion Kit                                          -->
-		<!-- Big instant HP restore. Finally a use for blood bags.             -->
-		<!-- Uses: blood bag (ZERO vanilla use!), duct tape, first aid bandage. -->
+		<!-- 70 HP at once, another 70 over 35 seconds, stops bleeding.       -->
+		<!-- Uses: blood bags, duct tape, first aid bandage.                   -->
 		<!-- =============================================================== -->
 		<item name="foxacaryTransfusionKit">
 			<property name="Extends" value="medicalFirstAidKit"/>
@@ -136,9 +136,13 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="70"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryTransfusion"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="70" target="other"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryTransfusion"/>
 				<display_value name="dInstantHealth" value="70"/>
+				<display_value name="dHealOverTime" value="70"/>
+				<display_value name="dDuration" value="35"/>
 				<display_value name="dStopsBleeding" value="1"/>
 			</effect_group>
 		</item>
