@@ -53,6 +53,7 @@
 			<property name="Extends" value="medicalBandage"/>
 			<property name="CustomIcon" value="medicalBandage"/>
 			<property name="CustomIconTint" value="a0c0e0"/>
+			<property name="DisplayType" value="foxacaryStopsBleeding"/>
 			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -72,14 +73,16 @@
 
 		<!-- =============================================================== -->
 		<!-- Foxacary Honeyed Battle Dressing                                 -->
-		<!-- Stops bleeding, blocks next infection catch (honey = infection,   -->
-		<!-- per the Kitsune brand rule).                                      -->
+		<!-- Stops bleeding, blocks catching an infection for 2 minutes, and   -->
+		<!-- cures 5% of one you already have, the same as eating the honey    -->
+		<!-- (honey = infection, per the Kitsune brand rule).                  -->
 		<!-- Uses: honey, bandage, cloth.                                      -->
 		<!-- =============================================================== -->
 		<item name="foxacaryHoneyedDressing">
 			<property name="Extends" value="medicalBandage"/>
 			<property name="CustomIcon" value="medicalBandage"/>
 			<property name="CustomIconTint" value="f4b942"/>
+			<property name="DisplayType" value="foxacaryHoneyedDressing"/>
 			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -93,8 +96,15 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryHoneyedDressing"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInfectionCatch"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryHoneyedDressing"/>
 				<display_value name="dStopsBleeding" value="1"/>
-				<display_value name="dInfectionResist" value="1"/>
+
+				<!-- Honey's own cure, as foodHoney does it -->
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$buffInfectionAddCurePerc" operation="add" value="5"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffInfectionAddCure"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="ModifyCVar" target="other" cvar="$buffInfectionAddCurePerc" operation="add" value="5"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffInfectionAddCure"/>
+				<display_value name="dCureInfection" value=".05"/>
 			</effect_group>
 		</item>
 
@@ -107,6 +117,7 @@
 			<property name="Extends" value="medicalAloeCream"/>
 			<property name="CustomIcon" value="medicalAloeCream"/>
 			<property name="CustomIconTint" value="ffd966"/>
+			<property name="DisplayType" value="foxacaryHealOverTime"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -117,7 +128,7 @@
 			<effect_group tiered="false">
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryRoyalJelly"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryRoyalJelly"/>
-				<display_value name="dHealOverTime" value="50"/>
+				<display_value name="dHealthAmount" value="1"/>
 				<display_value name="dDuration" value="60"/>
 			</effect_group>
 		</item>
@@ -131,6 +142,7 @@
 			<property name="Extends" value="medicalFirstAidKit"/>
 			<property name="CustomIcon" value="medicalFirstAidKit"/>
 			<property name="CustomIconTint" value="ff5050"/>
+			<property name="DisplayType" value="foxacaryTransfusion"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -146,7 +158,7 @@
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryTransfusion"/>
 				<display_value name="dInstantHealth" value="70"/>
-				<display_value name="dHealOverTime" value="70"/>
+				<display_value name="dHealthAmount" value="2"/>
 				<display_value name="dDuration" value="35"/>
 				<display_value name="dStopsBleeding" value="1"/>
 			</effect_group>
@@ -154,14 +166,18 @@
 
 		<!-- =============================================================== -->
 		<!-- Foxacary Cold Compress                                           -->
-		<!-- Eases a concussion, and cools you down in a Sand Storm: takes    -->
-		<!-- 60 seconds off the storm's clock before it wears you down.        -->
+		<!-- Eases a concussion for 35 minutes without curing it: the penalties -->
+		<!-- are held off while it heals at its usual pace, so about four      -->
+		<!-- compresses see out a full one. Painkillers stay the cure.         -->
+		<!-- Cools you down in a Sand Storm: takes 60 seconds off the storm's  -->
+		<!-- clock before it wears you down.                                   -->
 		<!-- Uses: snowballs (one vanilla recipe), cloth.                      -->
 		<!-- =============================================================== -->
 		<item name="foxacaryColdCompress">
 			<property name="Extends" value="medicalBandage"/>
 			<property name="CustomIcon" value="resourceSnowBall"/>
 			<property name="CustomIconTint" value="c0e8ff"/>
+			<property name="DisplayType" value="foxacaryColdCompress"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -170,8 +186,12 @@
 			<property name="DescriptionKey" value="foxacaryColdCompressDesc"/>
 
 			<effect_group tiered="false">
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryConcussion"/>
-				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryConcussion"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryColdCompress">
+					<requirement name="HasBuff" buff="buffInjuryConcussion"/></triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryColdCompress">
+					<requirement name="HasBuff" target="other" buff="buffInjuryConcussion"/></triggered_effect>
+				<display_value name="dEasesConcussion" value="1"/>
+				<display_value name="dDuration" value="2100"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DesertTrackTime" operation="subtract" value="60"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DesertTrackTime" operation="set" value="0">
 					<requirement name="CVarCompare" cvar=".DesertTrackTime" operation="LT" value="0"/></triggered_effect>
@@ -188,6 +208,7 @@
 			<property name="Extends" value="medicalAloeCream"/>
 			<property name="CustomIcon" value="medicalAloeCream"/>
 			<property name="CustomIconTint" value="e07040"/>
+			<property name="DisplayType" value="foxacaryHealOverTime"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -203,7 +224,7 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".BurntTrackTime" operation="subtract" value="60"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".BurntTrackTime" operation="set" value="0">
 					<requirement name="CVarCompare" cvar=".BurntTrackTime" operation="LT" value="0"/></triggered_effect>
-				<display_value name="dHealOverTime" value="20"/>
+				<display_value name="dHealthAmount" value="1"/>
 				<display_value name="dDuration" value="20"/>
 			</effect_group>
 		</item>
@@ -218,7 +239,7 @@
 			<property name="Extends" value="drugSteroids"/>
 			<property name="CustomIcon" value="drugSteroids"/>
 			<property name="CustomIconTint" value="ffd040"/>
-			<property name="DisplayType" value="drugHazardReducer"/>
+			<property name="DisplayType" value="foxacaryAdrenaline"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -245,7 +266,7 @@
 			<property name="Extends" value="drugSteroids"/>
 			<property name="CustomIcon" value="drugSteroids"/>
 			<property name="CustomIconTint" value="80ff60"/>
-			<property name="DisplayType" value="drugHazardReducer"/>
+			<property name="DisplayType" value="foxacaryHealOverTime"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
 			<property name="UnlockedBy" value="craftingMedical"/>
@@ -258,6 +279,7 @@
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".WastelandTrackTime" operation="subtract" value="120"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".WastelandTrackTime" operation="set" value="0">
 					<requirement name="CVarCompare" cvar=".WastelandTrackTime" operation="LT" value="0"/></triggered_effect>
+				<display_value name="dHealthAmount" value="1"/>
 				<display_value name="dDuration" value="30"/>
 			</effect_group>
 		</item>

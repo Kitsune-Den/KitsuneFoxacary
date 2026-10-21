@@ -39,9 +39,9 @@ Foxacary fills those gaps. Every item uses a resource that's either underused or
 | Item | Recipe | Crafted at | Effect | Unlocks at medical journal level |
 |---|---|---|---|---|
 | Field Brace | 5 cloth, 2 wood, 1 duct tape | Backpack | Fixes a sprained arm or leg, no Physician perk needed | 3 |
-| Cold Compress | 2 snowballs, 2 cloth | Backpack | Clears a concussion. In a Sand Storm, buys you another minute before it wears you down | 12 |
+| Cold Compress | 2 snowballs, 2 cloth | Backpack | Holds off a concussion's penalties for 35 minutes while it heals, so about four see out a fresh one (painkillers still cure it outright). In a Sand Storm, buys you another minute before it wears you down | 12 |
 | Suture Kit | 3 cloth, 1 sewing kit, 1 beer | Backpack | Stops bleeding and clears an abrasion in one go | 15 |
-| Honeyed Battle Dressing | 1 honey, 1 bandage, 2 cloth | Campfire, with a beaker | Stops bleeding, and stops infection setting in for 2 minutes | 25 |
+| Honeyed Battle Dressing | 1 honey, 1 bandage, 2 cloth | Campfire, with a beaker | Stops bleeding, stops infection setting in for 2 minutes, and cures 5% of an infection you already have, like eating honey | 25 |
 | Burn Salve | 1 aloe cream, 2 animal fat, 2 beeswax | Campfire, with a beaker | Puts out fire, heals 20 over 20 seconds. In an Ember Storm, buys you another minute | 28 |
 | Royal Jelly Salve | 1 queen bee, 3 beeswax, 2 cloth, 1 aloe cream | Chemistry station | Heals 1 health a second for a minute | 35 |
 | Adrenaline Shot | 2 testosterone extract, 1 painkillers | Chemistry station | 30 seconds of 20% faster running and 50% faster stamina regen, then 60 seconds of 25% slower stamina regen | 45 |

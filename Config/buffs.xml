@@ -26,9 +26,10 @@
 		<!-- buffFoxacaryHoneyedDressing                                      -->
 		<!-- Short window of infection-catch resistance after application.     -->
 		<!-- Player feels "I treated the wound" and is protected until the     -->
-		<!-- dressing is effectively spent.                                    -->
+		<!-- dressing is effectively spent. The cure part is vanilla honey's   -->
+		<!-- buffInfectionAddCure, applied by the item.                        -->
 		<!-- =============================================================== -->
-		<buff name="buffFoxacaryHoneyedDressing" name_key="buffFoxacaryHoneyedDressingName" description_key="buffFoxacaryHoneyedDressingDesc" icon="ui_game_symbol_medical" icon_color="240,180,40">
+		<buff name="buffFoxacaryHoneyedDressing" name_key="buffFoxacaryHoneyedDressingName" description_key="buffFoxacaryHoneyedDressingDesc" icon="ui_game_symbol_infection_immunity" icon_color="240,180,40">
 			<stack_type value="replace"/>
 			<duration value="120"/>
 			<display_value value="duration"/>
@@ -108,6 +109,37 @@
 
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1"/>
+			</effect_group>
+		</buff>
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryColdCompress: 35 minutes with a concussion's         -->
+		<!-- penalties held off. The concussion stays and heals at its usual  -->
+		<!-- pace (about 2 hours from a fresh one), so it takes about four    -->
+		<!-- compresses to see one out. Another compress resets the clock to -->
+		<!-- 35 minutes, it doesn't add to it. Gone with the concussion.      -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryColdCompress" name_key="buffFoxacaryColdCompressName" description_key="buffFoxacaryColdCompressDesc" icon="ui_game_symbol_cold" icon_color="190,230,255">
+			<stack_type value="replace"/>
+			<duration value="2100"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<!-- Undo buffInjuryConcussion's penalties: -1 to every attribute, -->
+			<!-- the max health it blocks, and the blur spells.                -->
+			<effect_group>
+				<requirement name="HasBuff" buff="buffInjuryConcussion"/>
+				<passive_effect name="AttributeLevel" operation="base_add" value="1"/>
+				<passive_effect name="HealthMaxBlockage" operation="base_subtract" value="@.ConcussionHealthBlockage"/>
+				<passive_effect name="BuffResistance" operation="base_add" value="1" tags="buffInjuryConcussionBlur"/>
+			</effect_group>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffFoxacaryColdCompress">
+					<requirement name="!HasBuff" buff="buffInjuryConcussion"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="RefreshPerks"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RefreshPerks"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RefreshPerks"/>
 			</effect_group>
 		</buff>
 
