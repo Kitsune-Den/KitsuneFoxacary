@@ -42,7 +42,7 @@ Foxacary fills those gaps. Every item uses a resource that's either underused or
 | Suture Kit | 3 cloth, 1 sewing kit, 1 beer | Backpack | Stops bleeding and clears an abrasion in one go | 15 |
 | Honeyed Battle Dressing | 1 honey, 1 bandage, 2 cloth | Campfire, with a beaker | Stops bleeding, and stops infection setting in for 2 minutes | 25 |
 | Royal Jelly Salve | 1 queen bee, 3 beeswax, 2 cloth, 1 aloe cream | Chemistry station | Heals 1 health a second for a minute | 35 |
-| Transfusion Kit | 2 blood bags, 2 duct tape, 1 first aid bandage | Chemistry station | Restores 70 health at once and stops bleeding | 65 |
+| Transfusion Kit | 2 blood bags, 2 duct tape, 1 first aid bandage | Chemistry station | Restores 70 health at once and another 70 over 35 seconds, and stops bleeding | 65 |
 
 Every item works on a teammate too: use it with the secondary action while looking at them.
 

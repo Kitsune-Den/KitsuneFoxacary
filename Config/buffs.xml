@@ -38,6 +38,22 @@
 			</effect_group>
 		</buff>
 
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryTransfusion                                          -->
+		<!-- Applied by the Transfusion Kit after its instant 70 HP.          -->
+		<!-- Another 70 HP over 35 seconds, 2 HP/s.                           -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryTransfusion" name_key="buffFoxacaryTransfusionName" description_key="buffFoxacaryTransfusionDesc" icon="ui_game_symbol_medical" icon_color="255,80,80">
+			<stack_type value="replace"/>
+			<duration value="35"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="2"/>
+			</effect_group>
+		</buff>
+
 	</append>
 
 </configs>
