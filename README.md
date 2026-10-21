@@ -22,7 +22,7 @@ Vanilla 7D2D has some real gaps in the medical tree:
 
 - You can't cure a sprain without dumping a point into Physician. For Agility archetypes or pure loot-runners, that perk isn't a priority, so they get to walk slowly for ten minutes instead.
 - Blood bags pile up as loot, and vanilla only puts them into Fort Bites and First Aid Kits. Most end up sold to traders.
-- Queen Bees are worse off. The item exists, but nothing in vanilla drops it and no recipe uses it.
+- Queen Bees are worse off. 3.3 added the apiary, and the Queen Bee's own description says it's for building one, but the apiary's recipe doesn't use it and nothing in vanilla drops it.
 - Testosterone extract is harvested constantly and used in only two recipes.
 
 Foxacary fills those gaps. Every item uses a resource that's either underused or completely wasted in vanilla, and slots into the existing `craftingMedical` journal progression so it feels like it was always part of the game.
