@@ -54,6 +54,8 @@ Most items work on a teammate too: use them with the secondary action while look
 
 Each item stacks to 5 (the Transfusion Kit to 3). With [Kitsune Stacks](https://github.com/Kitsune-Den/KitsuneStacks) 3.0.1 or later, they stack to 50 like the vanilla medical items.
 
+With [Kitsune Shugyō](https://github.com/Kitsune-Den/KitsuneShugyo) or Kitsune Learned Skills, using or crafting any Foxacary item counts as medical crafting practice, so learning by doing unlocks them like it does the vanilla medical items.
+
 ## Loot
 
 - **Queen Bees** now drop when you harvest honey from trees: a 1% chance, under the same harvest rules as honey.

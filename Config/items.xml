@@ -20,6 +20,7 @@
 			<property name="CustomIconTint" value="c8a878"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="15"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryFieldBraceDesc"/>
@@ -54,6 +55,7 @@
 			<property name="CustomIconTint" value="a0c0e0"/>
 			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="30"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacarySutureKitDesc"/>
@@ -80,6 +82,7 @@
 			<property name="CustomIconTint" value="f4b942"/>
 			<property name="Tags" value="medical,medicalSkill,stopsBleeding,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="50"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryHoneyedDressingDesc"/>
@@ -106,6 +109,7 @@
 			<property name="CustomIconTint" value="ffd966"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="150"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryRoyalJellySalveDesc"/>
@@ -129,6 +133,7 @@
 			<property name="CustomIconTint" value="ff5050"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="300"/>
 			<property name="Stacknumber" value="3"/>
 			<property name="DescriptionKey" value="foxacaryTransfusionKitDesc"/>
@@ -159,6 +164,7 @@
 			<property name="CustomIconTint" value="c0e8ff"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="20"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryColdCompressDesc"/>
@@ -184,6 +190,7 @@
 			<property name="CustomIconTint" value="e07040"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="60"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryBurnSalveDesc"/>
@@ -214,6 +221,7 @@
 			<property name="DisplayType" value="drugHazardReducer"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="120"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryAdrenalineShotDesc"/>
@@ -240,6 +248,7 @@
 			<property name="DisplayType" value="drugHazardReducer"/>
 			<property name="Tags" value="medical,medicalSkill,foxacary"/>
 			<property name="Group" value="Science,Medical,TCMedical"/>
+			<property name="UnlockedBy" value="craftingMedical"/>
 			<property name="EconomicValue" value="200"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryRadShotDesc"/>
