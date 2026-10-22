@@ -5,6 +5,13 @@
 	<!--                                                                      -->
 	<!-- Every item slots into craftingMedical progression via progression.xml. -->
 	<!-- Each item uses an underused or entirely-unused vanilla resource.      -->
+	<!--                                                                      -->
+	<!-- Extends carries properties over, not effect groups or the use       -->
+	<!-- requirements in Action0. So every item adds its own XP (see         -->
+	<!-- buffFoxacaryMedicalXP), and an item that only cures something       -->
+	<!-- can't be used on yourself without it, the way vanilla's bandage     -->
+	<!-- and splint can't. Use on others can't be checked up front (vanilla  -->
+	<!-- has the same limit), so there the XP waits for a real patient.      -->
 	<!-- ================================================================== -->
 
 	<append xpath="/items">
@@ -24,6 +31,17 @@
 			<property name="EconomicValue" value="15"/>
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryFieldBraceDesc"/>
+
+			<property class="Action0">
+				<requirement name="HasBuff" buff="buffLegSprained,buffArmSprained"/>
+			</property>
+
+			<!-- XP before the cure, so the check on others sees the sprain -->
+			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP">
+					<requirement name="HasBuff" target="other" buff="buffLegSprained,buffArmSprained"/></triggered_effect>
+			</effect_group>
 
 			<!-- Strip perk requirement; splint requires perkPhysician 1. -->
 			<effect_group name="Primary Action" tiered="false">
@@ -46,7 +64,9 @@
 
 		<!-- =============================================================== -->
 		<!-- Foxacary Suture Kit                                              -->
-		<!-- Instant stop on bleeding AND abrasion in one use.                 -->
+		<!-- Instant stop on bleeding, laceration AND abrasion in one use.     -->
+		<!-- Vanilla's sewing kit already sutures a laceration, so the kit    -->
+		<!-- built from one does too.                                         -->
 		<!-- Uses: thread, sewing kit (accumulates), alcohol.                  -->
 		<!-- =============================================================== -->
 		<item name="foxacarySutureKit">
@@ -61,12 +81,23 @@
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacarySutureKitDesc"/>
 
+			<property class="Action0">
+				<requirement name="HasBuff" buff="buffInjuryBleeding,buffLaceration,buffInjuryAbrasion"/>
+			</property>
+
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP">
+					<requirement name="HasBuff" target="other" buff="buffInjuryBleeding,buffLaceration,buffInjuryAbrasion"/></triggered_effect>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffLaceration"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryAbrasion"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryBleeding"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffLaceration"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffInjuryAbrasion"/>
 				<display_value name="dStopsBleeding" value="1"/>
+				<display_value name="dStopsLaceration" value="1"/>
 				<display_value name="dStopsAbrasion" value="1"/>
 			</effect_group>
 		</item>
@@ -91,6 +122,9 @@
 			<property name="DescriptionKey" value="foxacaryHoneyedDressingDesc"/>
 
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInfectionCatch"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryHoneyedDressing"/>
@@ -126,6 +160,9 @@
 			<property name="DescriptionKey" value="foxacaryRoyalJellySalveDesc"/>
 
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXPKit"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXPKit"/>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryRoyalJelly"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryRoyalJelly"/>
 				<display_value name="dHealthAmount" value="1"/>
@@ -151,6 +188,9 @@
 			<property name="DescriptionKey" value="foxacaryTransfusionKitDesc"/>
 
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXPKit"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXPKit"/>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="70"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInjuryBleeding"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryTransfusion"/>
@@ -169,8 +209,8 @@
 		<!-- Eases a concussion for 35 minutes without curing it: the penalties -->
 		<!-- are held off while it heals at its usual pace, so about four      -->
 		<!-- compresses see out a full one. Painkillers stay the cure.         -->
-		<!-- Cools you down in a Sand Storm: takes 60 seconds off the storm's  -->
-		<!-- clock before it wears you down.                                   -->
+		<!-- Cools you down in a Sand Storm: stops the storm's clock for 60    -->
+		<!-- seconds (buffFoxacaryStormReliefDesert).                          -->
 		<!-- Uses: snowballs (one vanilla recipe), cloth.                      -->
 		<!-- =============================================================== -->
 		<item name="foxacaryColdCompress">
@@ -185,23 +225,30 @@
 			<property name="Stacknumber" value="5"/>
 			<property name="DescriptionKey" value="foxacaryColdCompressDesc"/>
 
+			<property class="Action0">
+				<requirement name="HasBuff" buff="buffInjuryConcussion,buffDesert_Storm"/>
+			</property>
+
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP">
+					<requirement name="HasBuff" target="other" buff="buffInjuryConcussion"/></triggered_effect>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryColdCompress">
 					<requirement name="HasBuff" buff="buffInjuryConcussion"/></triggered_effect>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryColdCompress">
 					<requirement name="HasBuff" target="other" buff="buffInjuryConcussion"/></triggered_effect>
 				<display_value name="dEasesConcussion" value="1"/>
 				<display_value name="dDuration" value="2100"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DesertTrackTime" operation="subtract" value="60"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".DesertTrackTime" operation="set" value="0">
-					<requirement name="CVarCompare" cvar=".DesertTrackTime" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryStormReliefDesert">
+					<requirement name="HasBuff" buff="buffDesert_Storm"/></triggered_effect>
 			</effect_group>
 		</item>
 
 		<!-- =============================================================== -->
 		<!-- Foxacary Burn Salve                                              -->
-		<!-- Puts out fire, heals 20 over 20 seconds, and takes 60 seconds    -->
-		<!-- off an Ember Storm's clock.                                       -->
+		<!-- Puts out fire, heals 20 over 20 seconds, and stops an Ember      -->
+		<!-- Storm's clock for 60 seconds (buffFoxacaryStormReliefBurnt).     -->
 		<!-- Uses: aloe cream, animal fat, beeswax (one vanilla recipe).       -->
 		<!-- =============================================================== -->
 		<item name="foxacaryBurnSalve">
@@ -217,13 +264,15 @@
 			<property name="DescriptionKey" value="foxacaryBurnSalveDesc"/>
 
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffBurningElement,buffBurningMolotov,buffBurningZombie,buffBurningFlamingArrow,buffBurningEnvironment"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryBurnSalve"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="RemoveBuff" target="other" buff="buffBurningElement,buffBurningMolotov,buffBurningZombie,buffBurningFlamingArrow,buffBurningEnvironment"/>
 				<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffFoxacaryBurnSalve"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".BurntTrackTime" operation="subtract" value="60"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".BurntTrackTime" operation="set" value="0">
-					<requirement name="CVarCompare" cvar=".BurntTrackTime" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryStormReliefBurnt">
+					<requirement name="HasBuff" buff="buffBurnt_Storm"/></triggered_effect>
 				<display_value name="dHealthAmount" value="1"/>
 				<display_value name="dDuration" value="20"/>
 			</effect_group>
@@ -248,6 +297,8 @@
 			<property name="DescriptionKey" value="foxacaryAdrenalineShotDesc"/>
 
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffFoxacaryAdrenalineCrash"/>
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryAdrenaline"/>
 				<display_value name="dRunSpeed" value=".2"/>
@@ -257,9 +308,10 @@
 
 		<!-- =============================================================== -->
 		<!-- Foxacary Rad Shot                                                -->
-		<!-- Takes 120 seconds off a Radiation Storm's clock and heals 30 over -->
-		<!-- 30 seconds. Doesn't touch the biome hazard timers (vanilla's     -->
-		<!-- smoothies do that) or the deadly radiation at the map's edge.    -->
+		<!-- Stops a Radiation Storm's clock for 120 seconds                  -->
+		<!-- (buffFoxacaryStormReliefWasteland) and heals 30 over 30 seconds. -->
+		<!-- Doesn't touch the biome hazard timers (vanilla's smoothies do    -->
+		<!-- that) or the deadly radiation at the map's edge.                 -->
 		<!-- Uses: blood bag, nitrate powder, radiated mushrooms (one recipe). -->
 		<!-- =============================================================== -->
 		<item name="foxacaryRadShot">
@@ -275,10 +327,11 @@
 			<property name="DescriptionKey" value="foxacaryRadShotDesc"/>
 
 			<effect_group tiered="false">
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryMedicalXP"/>
+
 				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryRadShot"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".WastelandTrackTime" operation="subtract" value="120"/>
-				<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar=".WastelandTrackTime" operation="set" value="0">
-					<requirement name="CVarCompare" cvar=".WastelandTrackTime" operation="LT" value="0"/></triggered_effect>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffFoxacaryStormReliefWasteland">
+					<requirement name="HasBuff" buff="buffWasteland_Storm"/></triggered_effect>
 				<display_value name="dHealthAmount" value="1"/>
 				<display_value name="dDuration" value="30"/>
 			</effect_group>
