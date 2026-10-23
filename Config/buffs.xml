@@ -143,6 +143,142 @@
 			</effect_group>
 		</buff>
 
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryMedicalXP / buffFoxacaryMedicalXPKit                 -->
+		<!-- XP for treating someone with a Foxacary item, added to whoever   -->
+		<!-- used it. A trigger like vanilla's buffFatiguedTrigger, so each   -->
+		<!-- item needs one line instead of its own copy of the ladder.       -->
+		<!-- The ladders are vanilla's: the splint's and first aid bandage's  -->
+		<!-- for most items, the cast's and first aid kit's for the Royal     -->
+		<!-- Jelly Salve and Transfusion Kit. Physician ranks add the same    -->
+		<!-- bonus they do in vanilla.                                        -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryMedicalXP" name_key="buff Foxacary Medical XP" icon="ui_game_symbol_medical" hidden="true">
+			<duration value=".1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="100"/>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="200">
+					<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="300">
+					<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="Equals" value="2"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="600">
+					<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="3"/></triggered_effect>
+			</effect_group>
+		</buff>
+
+		<buff name="buffFoxacaryMedicalXPKit" name_key="buff Foxacary Medical XP Kit" icon="ui_game_symbol_medical" hidden="true">
+			<duration value=".1"/>
+
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="300"/>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="600">
+					<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="Equals" value="1"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="900">
+					<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="Equals" value="2"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="1800">
+					<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="3"/></triggered_effect>
+			</effect_group>
+		</buff>
+
+		<!-- =============================================================== -->
+		<!-- buffFoxacaryStormRelief*: the storm's clock stands still.        -->
+		<!-- Stage 1 counts seconds in .<Biome>TrackTime and builds its max   -->
+		<!-- stamina/health block in .<Biome>Stage01DMG; these undo each      -->
+		<!-- second of both. Rewinding the clock instead would let stage 1    -->
+		<!-- run past its length, and the block grows the whole time.         -->
+		<!-- Stage 2 has no clock, so they give back the health it drains,    -->
+		<!-- under the same conditions vanilla drains it.                     -->
+		<!-- Cold Compress 60s, Burn Salve 60s, Rad Shot 120s. Another use    -->
+		<!-- starts the time over, it doesn't add to it.                      -->
+		<!-- =============================================================== -->
+		<buff name="buffFoxacaryStormReliefDesert" name_key="buffFoxacaryStormReliefName" description_key="buffFoxacaryStormReliefDesc" icon="ui_game_symbol_storm_desert" icon_color="190,230,255">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<requirement name="HasBuff" buff="buffDesert_Storm_Stage01"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DesertTrackTime" operation="subtract" value="1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffDesert_Storm_Stage01"/>
+				<requirement name="!HasBuff" buff="buffDesert_Storm_Recover01"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DesertStage01DMG" operation="subtract" value="@.DesertStage01DMGRate"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".DesertStage01DMG" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".DesertStage01DMG" operation="LT" value="0"/></triggered_effect>
+			</effect_group>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffDesert_Storm_Stage02"/>
+				<requirement name="!HasBuff" buff="buffDesert_Storm_Recover01,god"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="2">
+					<requirement name="!HasBuff" buff="buffDesert_Hazard_Over,buffOasisSmoothieRun"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1">
+					<requirement name="HasBuff" buff="buffDesert_Hazard_Over"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1">
+					<requirement name="HasBuff" buff="buffOasisSmoothieRun"/></triggered_effect>
+			</effect_group>
+		</buff>
+
+		<buff name="buffFoxacaryStormReliefBurnt" name_key="buffFoxacaryStormReliefName" description_key="buffFoxacaryStormReliefDesc" icon="ui_game_symbol_storm_burnt" icon_color="230,120,60">
+			<stack_type value="replace"/>
+			<duration value="60"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<requirement name="HasBuff" buff="buffBurnt_Storm_Stage01"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".BurntTrackTime" operation="subtract" value="1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffBurnt_Storm_Stage01"/>
+				<requirement name="!HasBuff" buff="buffBurnt_Storm_Recover01"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".BurntStage01DMG" operation="subtract" value="@.BurntStage01DMGRate"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".BurntStage01DMG" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".BurntStage01DMG" operation="LT" value="0"/></triggered_effect>
+			</effect_group>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffBurnt_Storm_Stage02"/>
+				<requirement name="!HasBuff" buff="buffBurnt_Storm_Recover01,god"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="2">
+					<requirement name="!HasBuff" buff="buffBurnt_Hazard_Over,buffBurntSmoothieRun"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1">
+					<requirement name="HasBuff" buff="buffBurnt_Hazard_Over"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="1">
+					<requirement name="HasBuff" buff="buffBurntSmoothieRun"/></triggered_effect>
+			</effect_group>
+		</buff>
+
+		<buff name="buffFoxacaryStormReliefWasteland" name_key="buffFoxacaryStormReliefName" description_key="buffFoxacaryStormReliefDesc" icon="ui_game_symbol_storm_wasteland" icon_color="120,255,90">
+			<stack_type value="replace"/>
+			<duration value="120"/>
+			<display_value value="duration"/>
+			<update_rate value="1"/>
+
+			<effect_group>
+				<requirement name="HasBuff" buff="buffWasteland_Storm_Stage01"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".WastelandTrackTime" operation="subtract" value="1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffWasteland_Storm_Stage01"/>
+				<requirement name="!HasBuff" buff="buffWasteland_Storm_Recover01"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".WastelandStage01DMG" operation="subtract" value="@.WastelandStage01DMGRate"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".WastelandStage01DMG" operation="set" value="0">
+					<requirement name="CVarCompare" cvar=".WastelandStage01DMG" operation="LT" value="0"/></triggered_effect>
+			</effect_group>
+			<effect_group>
+				<requirement name="HasBuff" buff="buffWasteland_Storm_Stage02"/>
+				<requirement name="!HasBuff" buff="buffWasteland_Storm_Recover01,god"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="4">
+					<requirement name="!HasBuff" buff="buffWasteland_Hazard_Over,buffAtomicSmoothieRun"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="2">
+					<requirement name="HasBuff" buff="buffWasteland_Hazard_Over"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="add" value="2">
+					<requirement name="HasBuff" buff="buffAtomicSmoothieRun"/></triggered_effect>
+			</effect_group>
+		</buff>
+
 	</append>
 
 </configs>

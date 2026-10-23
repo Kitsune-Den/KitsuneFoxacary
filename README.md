@@ -39,18 +39,22 @@ Foxacary fills those gaps. Every item uses a resource that's either underused or
 | Item | Recipe | Crafted at | Effect | Unlocks at medical journal level |
 |---|---|---|---|---|
 | Field Brace | 5 cloth, 2 wood, 1 duct tape | Backpack | Fixes a sprained arm or leg, no Physician perk needed | 3 |
-| Cold Compress | 2 snowballs, 2 cloth | Backpack | Holds off a concussion's penalties for 35 minutes while it heals, so about four see out a fresh one (painkillers still cure it outright). In a Sand Storm, buys you another minute before it wears you down | 12 |
-| Suture Kit | 3 cloth, 1 sewing kit, 1 beer | Backpack | Stops bleeding and clears an abrasion in one go | 15 |
+| Cold Compress | 2 snowballs, 2 cloth | Backpack | Holds off a concussion's penalties for 35 minutes while it heals, so about four see out a fresh one (painkillers still cure it outright). In a Sand Storm, stops the storm's clock for a minute | 12 |
+| Suture Kit | 3 cloth, 1 sewing kit, 1 beer | Backpack | Stops bleeding, sutures a deep laceration and clears an abrasion in one go | 15 |
 | Honeyed Battle Dressing | 1 honey, 1 bandage, 2 cloth | Campfire, with a beaker | Stops bleeding, stops infection setting in for 2 minutes, and cures 5% of an infection you already have, like eating honey | 25 |
-| Burn Salve | 1 aloe cream, 2 animal fat, 2 beeswax | Campfire, with a beaker | Puts out fire, heals 20 over 20 seconds. In an Ember Storm, buys you another minute | 28 |
+| Burn Salve | 1 aloe cream, 2 animal fat, 2 beeswax | Campfire, with a beaker | Puts out fire, heals 20 over 20 seconds. In an Ember Storm, stops the storm's clock for a minute | 28 |
 | Royal Jelly Salve | 1 queen bee, 3 beeswax, 2 cloth, 1 aloe cream | Chemistry station | Heals 1 health a second for a minute | 35 |
 | Adrenaline Shot | 2 testosterone extract, 1 painkillers | Chemistry station | 30 seconds of 20% faster running and 50% faster stamina regen, then 60 seconds of 25% slower stamina regen | 45 |
-| Rad Shot | 1 blood bag, 2 nitrate powder, 1 radiated mushrooms | Chemistry station | Heals 30 over 30 seconds. In a Radiation Storm, buys you two more minutes | 55 |
+| Rad Shot | 1 blood bag, 2 nitrate powder, 1 radiated mushrooms | Chemistry station | Heals 30 over 30 seconds. In a Radiation Storm, stops the storm's clock for two minutes | 55 |
 | Transfusion Kit | 2 blood bags, 2 duct tape, 1 first aid bandage | Chemistry station | Restores 70 health at once and another 70 over 35 seconds, and stops bleeding | 65 |
 
 Most items work on a teammate too: use them with the secondary action while looking at them. The Adrenaline Shot and Rad Shot are for yourself, and the storm part of the Cold Compress and Burn Salve only works on you.
 
-**Storms:** while you're out in a storm, the game counts how long you've been exposed, and your clothing sets how long you last before it starts wearing you down. The Cold Compress, Burn Salve and Rad Shot take time off that count, so use them before the storm gets to you. They don't touch the biome hazard timers (vanilla's smoothies handle those) or the deadly radiation at the edge of the map.
+The Field Brace, Suture Kit and Cold Compress only cure things, so like vanilla's bandage and splint you can't use them on yourself with nothing to treat. The Compress counts a Sand Storm as something to treat.
+
+**Experience:** every Foxacary item gives XP when you use it, on yourself or a teammate, and Physician ranks raise it the way they do for vanilla's medical items. The Royal Jelly Salve and Transfusion Kit give First Aid Kit XP, everything else gives First Aid Bandage XP. The Field Brace, Suture Kit and Cold Compress only give XP on a teammate if they had something for it to treat.
+
+**Storms:** while you're out in a storm, the game counts how long you've been exposed, and your clothing sets how long you last before it starts wearing you down. The Cold Compress, Burn Salve and Rad Shot stop that count while they last, so you don't get any closer to the storm's second stage. If it's already wearing you down, you stop losing health for that time instead. Use one any time the storm is on, even while you're sheltered, just before you head out. Another one starts the time over, it doesn't add to it. They don't touch the biome hazard timers (vanilla's smoothies handle those) or the deadly radiation at the edge of the map.
 
 Each item stacks to 5 (the Transfusion Kit to 3). With [Kitsune Stacks](https://github.com/Kitsune-Den/KitsuneStacks) 3.0.1 or later, they stack to 50 like the vanilla medical items.
 

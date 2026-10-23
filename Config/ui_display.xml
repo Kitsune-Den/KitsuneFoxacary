@@ -35,6 +35,7 @@
 		<!-- Suture Kit -->
 		<item_display_info display_type="foxacaryStopsBleeding" display_group="groupConsumables">
 			<display_entry name="dStopsBleeding" title_key="statStopsBleeding" display_type="Percent"/>
+			<display_entry name="dStopsLaceration" title_key="statStopsLaceration" display_type="Percent"/>
 		</item_display_info>
 
 		<!-- Cold Compress -->
