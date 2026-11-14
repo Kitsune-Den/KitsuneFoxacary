@@ -20,7 +20,7 @@ Fox-crafted pharmacy expansion for 7 Days to Die. Think KitsuneKitchen, but for 
 
 Vanilla 7D2D has some real gaps in the medical tree:
 
-- You can't cure a sprain without a point in Physician. Since 3.0 a splint will at least speed up the healing without it, but Agility archetypes and pure loot-runners, who rarely take that perk, still have to wait out the recovery.
+- You can't cure a sprain without a point in Physician. In 2.6 a splint wouldn't touch a sprain at all without the perk. The Field Brace fixed that in April 2026, and vanilla started allowing it in 3.0, but a vanilla splint only speeds up the healing. Agility archetypes and pure loot-runners, who rarely take that perk, still have to wait out the recovery. The Field Brace cures it on the spot.
 - Blood bags pile up as loot, and vanilla only puts them into Fort Bites and First Aid Kits. Most end up sold to traders.
 - Queen Bees are worse off. 3.3 added the apiary, and the Queen Bee's own description says it's for building one, but the apiary's recipe doesn't use it and nothing in vanilla drops it.
 - Testosterone extract is harvested constantly and used in only two recipes.
