@@ -20,9 +20,9 @@ Fox-crafted pharmacy expansion for 7 Days to Die. Think KitsuneKitchen, but for 
 
 Vanilla 7D2D has some real gaps in the medical tree:
 
-- You can't cure a sprain without dumping a point into Physician. For Agility archetypes or pure loot-runners, that perk isn't a priority, so they get to walk slowly for ten minutes instead.
+- You can't cure a sprain without a point in Physician. In 2.6 a splint wouldn't touch a sprain at all without the perk. The Field Brace fixed that in April 2026, and vanilla started allowing it in 3.0, but a vanilla splint only keeps the limb splinted while it heals. A splinted leg still slows you down and lowers your max health, and a critical hit to it in that time resets it to a broken leg's full timer. The Field Brace puts you straight back to normal, which matters most for Agility archetypes and pure loot-runners, who rarely take that perk.
 - Blood bags pile up as loot, and vanilla only puts them into Fort Bites and First Aid Kits. Most end up sold to traders.
-- Queen Bees are worse off. 3.3 added the apiary, and the Queen Bee's own description says it's for building one, but the apiary's recipe doesn't use it and nothing in vanilla drops it.
+- Queen Bees are worse off. The Queen Bee's own description calls it one of the main ingredients for an apiary, but the apiary's recipe doesn't use it and nothing in vanilla drops it.
 - Testosterone extract is harvested constantly and used in only two recipes.
 
 Foxacary fills those gaps. Every item uses a resource that's either underused or completely wasted in vanilla, and slots into the existing `craftingMedical` journal progression so it feels like it was always part of the game.
