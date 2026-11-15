@@ -76,7 +76,7 @@ XML-only mod. No DLL, no Harmony, EAC-safe.
 
 **Server-side only** on a dedicated server: players don't need to install it. The server sends its XML and localization when they join, and every item uses a vanilla icon. Single player works too.
 
-Built against V3.0 (Dead Hot Summer), and its patches checked against V3.3: the vanilla items, buffs, the `craftingMedical` progression skill and the `treeMaster` honey/queen-bee loot hooks are all still there.
+Built against V3.0 (Dead Hot Summer), and its patches checked against V3.4: the vanilla items, buffs, the `craftingMedical` progression skill and the `treeMaster` honey/queen-bee loot hooks are all still there.
 
 ## License
 
